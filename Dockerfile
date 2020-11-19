@@ -37,8 +37,11 @@ RUN printf "bcm2835-v4l2\n" >> /etc/modules
 
 # pip install stuff
 RUN pip3 install --upgrade pip
-RUN pip3 install async-timeout av==6.1.0 balena-sdk requests psutil hurry.filesize
+RUN pip3 install async-timeout av==6.1.0 balena-sdk requests psutil hurry.filesize pyudev
 RUN pip3 install aiohttp aiohttp_basicauth==0.1.3 aioice==0.6.10 aiortc==0.9.11 numpy==1.15.4 opencv-python==3.4.4.19 gpiozero --index-url https://www.piwheels.org/simple
+
+# udev for dynamic usb
+ENV UDEV=on
 
 # workdir
 WORKDIR /usr/src/app
